@@ -1,0 +1,2 @@
+class AddForeignKey < ApplicationRecord
+end

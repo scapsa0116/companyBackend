@@ -1,0 +1,2 @@
+class AddForeignKeysController < ApplicationController
+end
