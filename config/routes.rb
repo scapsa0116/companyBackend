@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   resources :documents
   resources :users
+  resources :sessions, only: [:create, :destroy]
+
   root 'documents#index'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/get_current_user', to: 'sessions#get_current_user'
+
+
   resources :users do 
     resources :documents
   end

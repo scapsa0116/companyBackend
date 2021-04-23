@@ -1,14 +1,24 @@
 class DocumentsController < ApplicationController
 
     def index
-        @documents = Document.all
-        render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}        
+      @documents = Document.all
+      render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}
+
+      
+      # if logged_in?
+      #   @documents = Document.all
+      #   render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}
+      # else
+      #   render json: {
+      #     error: "not logged in", status: :unauthorized
+      #   }
+      # end        
     end
 
-    # def home 
+    # def index 
     #   if logged_in?
-    #     @pictures = current_user.pictures
-    #     render json: PictureSerializer.new(@pictures).serializable_hash[:data].map{|hash| hash[:attributes]}        
+    #     @documents = current_user.documents
+    #     render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}        
 
     #   else
     #     render json: {
@@ -23,12 +33,14 @@ class DocumentsController < ApplicationController
     def show
       @document = Document.find(params[:id])
       # render json: PictureSerializer.new(@picture, include: [:reviews])
-      render json: @picture    
+      hash = DocumentSerializer.new(@document).serializable_hash
+      render json: {
+        document: hash[:data][:attributes]} 
     end
 
     def create 
         @document = current_user.documents.build(document_params)
-        if @picture.save
+        if @document.save
           render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes], status: :created        
 
         else
@@ -38,8 +50,9 @@ class DocumentsController < ApplicationController
     
 
     def update
+       @document = Document.find(params[:id])
         if @document.update(document_params)
-          render json: @document
+          render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes]
         else
           render json: @document.errors, status: :unprocessable_entity
         end

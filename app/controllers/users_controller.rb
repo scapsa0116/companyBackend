@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    hash = UserSerializer.new(@user, include: [:pictures]).serializable_hash
+    hash = UserSerializer.new(@user, include: [:documents]).serializable_hash
     render json: {
       user: hash[:data][:attributes],
       documents: hash[:included].map{|document| document[:attributes]},
