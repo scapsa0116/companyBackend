@@ -40,9 +40,10 @@ class DocumentsController < ApplicationController
 
     def create 
         @document = current_user.documents.build(document_params)
+       
         if @document.save
-          render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes], status: :created        
-
+           binding.pry
+        render json: @document, status: :created
         else
           render json: @document.errors, status: :unprocessable_entity
         end
