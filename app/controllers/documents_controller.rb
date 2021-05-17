@@ -42,7 +42,7 @@ class DocumentsController < ApplicationController
         @document = current_user.documents.build(document_params)
        
         if @document.save
-           binding.pry
+          #  binding.pry
         render json: @document, status: :created
         else
           render json: @document.errors, status: :unprocessable_entity
