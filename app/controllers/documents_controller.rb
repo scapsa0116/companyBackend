@@ -52,17 +52,16 @@ class DocumentsController < ApplicationController
 
     def update
        @document = Document.find(params[:id])
-        if @document.update(document_params)
-          render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes]
-        else
-          render json: @document.errors, status: :unprocessable_entity
-        end
+        # if @document.update(document_params)
+        #   render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes]
+        # else
+        #   render json: @document.errors, status: :unprocessable_entity
+        # end
+        @document.update_attributes(document_params)
+        render json: @document
       end
     
-      # DELETE /drinks/1
-      # def destroy
-      #   picture.destroy
-      # end
+      
     
     
     private
