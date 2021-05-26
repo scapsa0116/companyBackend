@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     has_many :documents
+    has_many :tables
+    has_many :pages
     has_secure_password
     validates_presence_of :name
     validates_presence_of :email

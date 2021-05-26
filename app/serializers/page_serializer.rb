@@ -1,4 +1,4 @@
-class FirstPageSerializer
+class PageSerializer
   include FastJsonapi::ObjectSerializer
   attributes :id, :distribuidor, :responsavel, :data, :user_id
 
