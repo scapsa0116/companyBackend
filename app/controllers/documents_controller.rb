@@ -58,7 +58,7 @@ class DocumentsController < ApplicationController
 
 
     def document_params 
-        params.require(:document).permit(:customer_code, :company_name,:cnpj, :address, :email, :user_id)
+        params.require(:document).permit(:customer_code, :company_name,:cnpj, :address, :email, :user_id, :distribuidor, :responsavel, :data)
     end
     
 end

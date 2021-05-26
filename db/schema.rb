@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_182116) do
+ActiveRecord::Schema.define(version: 2021_05_26_201221) do
 
   create_table "add_foreign_keys", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2021_05_26_182116) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "distribuidor"
+    t.string "responsavel"
+    t.datetime "data"
   end
 
   create_table "pages", force: :cascade do |t|

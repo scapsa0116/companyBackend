@@ -25,11 +25,6 @@ class PagesController < ApplicationController
 
     def update
        @page = Page.find(params[:id])
-        # if @document.update(document_params)
-        #   render json: DocumentSerializer.new(@document).serializable_hash[:data][:attributes]
-        # else
-        #   render json: @document.errors, status: :unprocessable_entity
-        # end
         @page.update_attributes(page_params)
         render json: @page
       end

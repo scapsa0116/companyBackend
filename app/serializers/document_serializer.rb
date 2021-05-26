@@ -1,6 +1,6 @@
 class DocumentSerializer 
   include FastJsonapi::ObjectSerializer
-  attributes :id, :customer_code, :company_name, :cnpj, :address, :email, :user_id
+  attributes :id, :customer_code, :company_name, :cnpj, :address, :email, :user_id, :distribuidor, :responsavel, :data
   
 
   # attribute :user_name do |document|
