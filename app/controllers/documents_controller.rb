@@ -2,17 +2,7 @@ class DocumentsController < ApplicationController
 
     def index
       @documents = Document.all
-      render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}
-
-      
-      # if logged_in?
-      #   @documents = Document.all
-      #   render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}
-      # else
-      #   render json: {
-      #     error: "not logged in", status: :unauthorized
-      #   }
-      # end        
+      render json: DocumentSerializer.new(@documents).serializable_hash[:data].map{|hash| hash[:attributes]}     
     end
 
     # def index 

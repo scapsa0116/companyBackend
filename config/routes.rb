@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :documents
   resources :users
   resources :sessions, only: [:create, :destroy]
+  resources :firstpages
 
   root 'documents#index'
   post '/login', to: 'sessions#create'
