@@ -7,4 +7,9 @@ class DocumentSerializer
   #   document.user.name  
   # end
 
+  # t = Time.now
+  #  attribute :t do |document|
+  #   document.time.t
+  # end
+
 end
